@@ -5,7 +5,7 @@ io.write("Hello , World") -- printing << Hello , World >> **without** insert a n
 io.write("\n") -- insert a newline
 --[[ 
 multiline comment 
---]]
+]]
 -- variables
 local a,b,c
 a = 10
@@ -13,15 +13,15 @@ b = 20
 c = 30
 
 print("Variables A is of type ",type(a)," and have the ",a," value")
---[[ Variables A is of type 	number	 and have the 	10	 value\n --]]
+--[[ Variables A is of type 	number	 and have the 	10	 value\n ]]
 
 io.write("Variables A is of type ",type(a)," and have the ",a," value\n")
---[[ Variables A is of type number and have the 10 value\n --]]
+--[[ Variables A is of type number and have the 10 value\n ]]
 
 -- reading input from user
 io.write("Enter \"Hello , World\"\n")
 b = io.read()
---[[ if else # you can write a line only in a multiline comment like /* Hello World */ --]]
+--[[ if else # you can write a line only in a multiline comment like /* Hello World */ ]]
 
 if b == "\"Hello , World\"" then print("Nice") else print('You Dont Enter "Hello , World"') end
 -- enter "Hello , World" no Hello , World
@@ -47,7 +47,7 @@ local y_n = io.read()
 print("Oh I say you this befor ! Why I Ask you but I say you entered what")
 io.write("You Enter: ",y_n)
 y_n = nil -- delete variables V
---[[  in lua we don't have undefined variables and if a variable does not exits lua return nil value --]]
+--[[  in lua we don't have undefined variables and if a variable does not exits lua return nil value ]]
 end
 
 v0 = _VERSION -- equal a variable with another variable
@@ -77,16 +77,36 @@ if true then
 end
 
 --[[  			LUA KEYWORDS the + sign means the keyword learned in tutorial
-     and+       break     do        else+      elseif+
-     end+       false+    for       function   if+
-     in        local+     nil+       not+      or+	   goto
-     repeat    return    then+      true+      until     while
+     and+      break     do+        else+      elseif+
+     end+      false+    for       function+  if+
+     in        local+     nil+       not+      or+	   goto+
+     repeat    return    then+      true+      until     while+
+     
      -- and lua supports
-     +     -     *     /     %     ^     #
-     ==    ~=    <=    >=    <     >     =
+     +     -     *     /     %     ^     # -- al thing in this columns
+     ==    ~=    <=    >=    <     >     = # all used in tutorial
      (     )     {     }     [     ]
      ;     :     ,     .     ..    ...
---]]
+]]
+
+-- assignment operators ( = or += , -= , *= , nut lua only support = )
+local z = 100 -- = is assign operator
+
+-- comparsion operators
+if 10 == 10 then print('ten equal ten') end -- equal operator
+if 12 ~= 10 then print('twelve not equal ten') end -- ~= is != or not 12 == 20 -- not equal operator
+if 12 < 20 then print("12 is less than 20") end -- less than operator
+if 20 > 12 then print("20 is greater than 12") end -- greater than operator
+if 12 <= 20 then print("12 is less or equal then 20") end -- less or equal operator
+if 20 >= 12 then print("20 is greater or equal than 12") end -- greater or equal operator
+
+-- arithmic operaors
+print(10+20) -- 30
+print(20-10) -- 10 
+print(20*10) -- 200 -- multiply
+print(20/10) -- 2.0 -- division
+print(20%10) -- 0 -- left over
+print(20^10) -- 10240000000000.0 -- power
 
 -- if else longer than 1 line
 if false then
@@ -175,6 +195,132 @@ if i<19 then goto section end
 
 -- functions
 
+function printWord()
+print("Word")
+end
+
+-- also better is using whitespaces after () in function name like following
+-- function PrintWorld()
+-- 	print("Word")
+-- end
+
+-- run the function
+printWord()
+-- or you must use of () if your function don't take any argument
+-- but if your function take at least 1 argument you can don't use ()
+printWord()
+
+-- --- function with argument --- --
+function printing(text) -- this function take 1 argument only named text
+	print(text)
+end
+printing("Anything but no Hello , World")
+printing "Yes You Can Don't Use Of ()" -- I don't use () (:)
+-- but if you don't pass any argument to function must use of ()
+printing()
+
+-- take more than 1 argument
+function name(arg1 , arg2 , arg3 )
+print(arg1..' '..arg2..' '..arg3)
+end
+
+-- call function
+-- name "Hello" "," "World" "!" you don't can don't use anytime of () 
+name ("Oh","No","Agin you") -- use can also use or don't use of ()
+--  but if you don't pass any argument to function muse use of ()
+--[[ name() lua don't can connect to nil value by .. 
+if you dont pass argument to function argument have nil value ]]
+
+-- rename function
+nm = name
+nm ("Oh!","No!","Again Hello World")
+
+-- or
+nm = function (param)
+-- do
+print("Brian Kernighan")
+end
+
+
+print ([[multi line message
+if you use of "" or '' characters you don't can
+write multiline but if use of [] you can write
+multi line in the multi line for print [] and [[
+you write [] but for print ]']  message you don't
+can do it because dont support escapes in multi line
+\n Oh here is like pre html tag contain 
+\n or \t and etc but don't support them
+]])
+
+--[[
+-----------------------------------------------
+-- ---- function with unlimit arguments
+function func(...)
+-- use of arg to access the ... argument
+print(arg)
+end
+
+-- you can pass unlimit arguments to ... in function
+
+func("h")
+func("H","e")
+func("H","e","l","l","o")
+func()
+
+function func(...)
+-- use of arg to access the ... argument
+print(arg[2])
+end
+
+func("h")
+func("H","e")
+func("H","e","l","l","o")
+func()
+------------------------------------------------
+]]
+
+--[[ lambda functions 
+function ()
+print("Hello , World From Lambda Function")
+end]]
+
+-- loop in lua
+-- while loop
+
+--[[
+while (condition )
+do
+	-- code
+end
+]]
+
+iter=0
+while(iter<=100)
+do
+	print("Loop ",iter," times repeat")
+	iter=iter+1
+end
+-- it's equal the following loop
+iter=nil -- delete variable in later of code line:40-50
+iter=0
+while iter<=100
+do
+print("other Loop : ",iter,"times repeat")
+	iter=iter+1
+end
+-- for as oneline write
+while iter <= 100 do iter=iter+1 end
+-- you can use of do like following
+i=0
+while i<=100 do
+	print("times ",i)
+i=i+1
+end
+
+--[[ in the multi line comments you don't can use space in --[[ but you can end
+lines in replace --] ] use ] ] like here ]]
+ 
+-- for loops in lua
 
 -- goto and continue in lua
 for i=1,10 do
@@ -182,6 +328,14 @@ for i=1,10 do
   print(i)
   ::continue::
 end
+
+
+
+
+
+
+
+
 
 
 
