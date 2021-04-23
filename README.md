@@ -1,0 +1,10 @@
+# FasterJavaSimplerPython
+Lua
+
+***This Repository Is A Lua Tutorial By Codes & Comments***
+
+*How Do I Help?*
+* fix the misspelling 
+* translate to another human language ( like French , Russian , etc )
+* add codes and tutorial
+* simpler : start &| fork
