@@ -77,10 +77,10 @@ if true then
 end
 
 --[[  			LUA KEYWORDS the + sign means the keyword learned in tutorial
-     and+      break     do+        else+      elseif+
-     end+      false+    for       function+  if+
-     in        local+     nil+       not+      or+	   goto+
-     repeat    return    then+      true+      until     while+
+     and+      break+     do+        else+      elseif+
+     end+      false+     for        function+  if+
+     in        local+     nil+       not+       or+	   goto+
+     repeat+   return+    then+      true+      until+   while+
      
      -- and lua supports
      +     -     *     /     %     ^     # -- al thing in this columns
@@ -252,11 +252,12 @@ can do it because dont support escapes in multi line
 \n or \t and etc but don't support them
 ]])
 
---[[
+--[[]]
 -----------------------------------------------
 -- ---- function with unlimit arguments
 function func(...)
 -- use of arg to access the ... argument
+local arg = {...}
 print(arg)
 end
 
@@ -267,23 +268,39 @@ func("H","e")
 func("H","e","l","l","o")
 func()
 
-function func(...)
--- use of arg to access the ... argument
-print(arg[2])
-end
-
 func("h")
 func("H","e")
 func("H","e","l","l","o")
 func()
 ------------------------------------------------
-]]
+--]]
 
 --[[ lambda functions 
 function ()
 print("Hello , World From Lambda Function")
 end]]
 
+ -- return 
+ --[[ functions can return a value or don't return but why difference between print and return
+ if you say
+ a = print("Hello , World")
+ a wil be nil but if you say
+ function ret()
+ return 10
+ end
+ a = ret()
+ a wil be 10
+ this means return return a value for doing on the returned thing 
+ like assign to a variable
+ ]]
+ 
+ function multiply(num,to)
+ return num*to
+ end
+ 
+ local multi = multiply(10,10)
+ 
+ print(multi)
 -- loop in lua
 -- while loop
 
@@ -319,23 +336,180 @@ end
 
 --[[ in the multi line comments you don't can use space in --[[ but you can end
 lines in replace --] ] use ] ] like here ]]
- 
+
+-- repeat until
+
+--[[
+repeat
+	statement
+until condition
+]]
+
+local i = 0
+repeat
+	io.write("Goooo Lua!!!!!!!!!!!!!! as times",i)
+	i=i+1
+until i>=100
+
+-- note::::::::::::::::::::::: see in the until 
+-- the condition is false
+-- :::::::::repeat/unti means until that until is false repeat statements:::::::::::::
+
+
+-- and is equal with following while and repeat/until loops
+-- while
+local w=0
+while i<=10 do
+print("While loop equal with for")
+i=i+1
+end
+-- repeat/until
+local r=0
+repeat
+	print("repeat equal with for loop")
+	r=r+1
+until r>=10
+
+-------------
 -- for loops in lua
 
+--[[ for loop have an init , time do code end
+loops do code times-init times ]]
+
+for i=0,10 do print("For Loop Single line") end
+-- is equal with
+for i=0,10 do
+print("For loop as single?No")
+end
+-- is equal with
+for i=0,10
+do
+print("For Loop : for loop")
+end
+
+-- break keyword
+--[[ 
+What's break ?
+if you want to break a loop you should change the condition but
+if you don't can do it ! When How DO YOU DO ? Yeah , Use of break
+]]
+local nn = 0
+while true 
+do
+if
+nn == 100 
+then 
+break 
+end
+print("If nn equal 100 I don't resume")
+nn=nn+1
+end
+
+-- you can use break in for and repeat loops
+for nnn=0,1000 do 
+if 
+nnn == 100 
+then 
+break 
+end
+print("In the for loop")
+end
+
 -- goto and continue in lua
+--[[
+What is continue ?
+if you want the loop don't break but
+don't countinue if condition was true 
+you can use of continue like followinng
+]]
+
 for i=1,10 do
   if i % 2 == 0 then goto continue end
   print(i)
   ::continue::
 end
 
+--- Arrays & Lists
+--[[
+if you work with python you say to array list 
+but in C familly we say array also in lua we
+say array .
+
+array is a collection of values in one variable
+like following
+
+we have a variable called vv that containt the a & b & c string values
+if we want implement this example using array write following code
+
+local vv = {"a","b","c")
+
+but if we want to replace value with variable we use of tables that in
+other programming languages called dictionary  ]]
+
+--  arrays
+
+local vv = {"a","b","c"}
+print(vv[0]) -- a
+print(vv[1]) -- b
+print(vv[2]) -- c
+
+vv[0] = 'Hello'
+print(vv[0])
+
+vv[1] = ' , '
+print(vv[1])
+
+vv[2] = 'World!'
+print(vv[2]);
+
+-- data types in lua
+[[
+in lua we have the following data types
+
+nil , boolean , number , string , function
+	, thread , userdata , table
+
+nil only is the nil keyword
+
+boolean containt the true & false keywords
+
+numbers contain every type of numbers like 2 , 2.3
+3.4 , 4 , 100000 , 0.00000000001
+
+strings are in "" or '' or [[]] [[like here
+
+userdata : is the data types that user created
+them by changing the lua C sources 
+
+function : the function data type say to functions
+	like io.write print or user-defined functions
+
+table : tables in other languages called dictionary
+but in lua is a thing like array that in replace 
+value hold variables
+
+thread : thread is a data type that the lua primary
+library provide it ( thread data type ) I say more
+in later
+
+]]
+
+--[[
+	table
+	
+]]
 
 
+function average(...)
+   result = 0
+   local arg = {...}
+   for i,v in ipairs(arg) do
+      result = result + v
+   end
+   return result/#arg
+end
 
-
-
-
-
+print("The average is",average(10,5,3))
 
 
 
