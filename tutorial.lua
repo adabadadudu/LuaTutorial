@@ -79,7 +79,7 @@ end
 --[[  			LUA KEYWORDS the + sign means the keyword learned in tutorial
      and+      break+     do+        else+      elseif+
      end+      false+     for        function+  if+
-     in        local+     nil+       not+       or+	   goto+
+     in+       local+     nil+       not+       or+	   goto+
      repeat+   return+    then+      true+      until+   while+
      
      -- and lua supports
@@ -429,11 +429,13 @@ for i=1,10 do
   ::continue::
 end
 
---- Arrays & Lists
+--- Arrays & Lists ( or in Lua tables)
 --[[
 if you work with python you say to array list 
 but in C familly we say array also in lua we
-say array .
+say table! but tables are similar to dictionaries
+also for compare array/list with dictionary I call then
+	array .
 
 array is a collection of values in one variable
 like following
@@ -448,10 +450,29 @@ other programming languages called dictionary  ]]
 
 --  arrays
 
-local vv = {"a","b","c"}
+local vv = {'a',"b",[[c]]}
+
+-- access element
+
+--[[ 
+	for access to elements use of [x] but in replace paste element number
+	BUT ELEMENT NUMBERS STARTS WITH 0 NO 1 
+
+	like following examples
+]]
+
 print(vv[0]) -- a
 print(vv[1]) -- b
 print(vv[2]) -- c
+
+-- unlike C/C++ & Java in lua you can use of elements
+-- with difference types ; like following
+
+local dif_type = {
+	nil , true , false , 10 , 1000 , 2.34 , 2.34 ,[[a]],
+	'b', "c" , nm
+}
+
 
 vv[0] = 'Hello'
 print(vv[0])
@@ -462,8 +483,20 @@ print(vv[1])
 vv[2] = 'World!'
 print(vv[2]);
 
+-- you can use of array inside array like following
+
+local arr_in_arr = {vv,dif_type}
+
+print(arr_in_arr) -- return a table
+
+-- also arrays can contain 1 value only V
+local arr_1_val = {[[array with 1 value only]]}
+
+print(arr_in_arr[0]);
+
+
 -- data types in lua
-[[
+--[[
 in lua we have the following data types
 
 nil , boolean , number , string , function
@@ -476,7 +509,7 @@ boolean containt the true & false keywords
 numbers contain every type of numbers like 2 , 2.3
 3.4 , 4 , 100000 , 0.00000000001
 
-strings are in "" or '' or [[]] [[like here
+strings are in "" or '' or [[]] --[[like here]] --[[
 
 userdata : is the data types that user created
 them by changing the lua C sources 
@@ -494,11 +527,123 @@ in later
 
 ]]
 
+-- execute moreover than 1 statement in single line
+-- for run over than 1 command in 1 line split them
+-- with ; character like following 
+print("We");io.write("Split");print("By");print(";");print("char")
+-- equal with
+print("We")
+io.write("Split")
+print("By")
+print(";")
+print("char")
+
+-- unlike C/C++/C#/Java/PHP like Python you can use
+-- or don't use of ; if you write single statement
+-- in 1 difference line 
+-- for more information see follow
+
+print("you can use of ; in single line"); -- like here
+io.write("AND&AND YOU CAN DON'T USE"); -- & here
+
+
 --[[
 	table
+	tables are a key/value variable like english dictionaries
+	look following
+	word : means
+	and tables is like following
+
+	{word=means}
+	or with lua syntax
+	{"word"={"mean1","mean2"}}
 	
 ]]
 
+-- empty table
+local table = {}
+
+-- add an element to the empty table
+
+table[1] = "Hello , World!"
+
+print('\n'..table[1]);
+
+-- table is like following
+-- {1="Hello , World"}
+
+table["lua"] = "programming language"
+
+print(table["lua"])
+
+-- table is like following
+-- {[1]="Hello , World",["lua"]="programming language"}
+
+-- reassign|rename|revalue a table
+
+table["lua"] = "written in ANSI C"
+
+print(table["lua"])
+
+-- table is like following
+-- {[1]="Hello , World",["lua"]s="written in ANSI C"}
+
+-- assign tables first
+
+local tbl = {["Hello"]="World"}
+
+print(tbl["Hello"])
+
+-- that is equal with
+
+local tble = {}
+tble["Hello"] = "World"
+
+print(tble["Hello"])
+
+-- also tables can contain variables in replace values
+-- like following
+
+local variable = "Hello"
+
+local table = {
+	variable="World"
+}
+
+print(table[variable])
+-- will be equal with V
+print(table["Hello"])
+
+-- this table is like following table
+-- {["Hello"] = "World"}
+
+-- also you can replace var|value:value with var|value:var|value
+-- like following
+
+local word = "World"
+
+local tablee = {
+	variable=word
+}
+
+print(tablee["Hello"])
+
+-- tablee is equal with table table
+
+--[[
+		S U C H   A S   N O T E   IO.WRITE  I S  F A S T E R
+		T H AN   PRINT  ABOUT  0.0003
+]]
+
+-- LUA in KEYWORD
+io.write("IN KEYWORD IN LUA")
+
+local l = {"Hello","World"} 
+
+for ll in ipairs(l) 
+do
+	io.write(ll);
+end
 
 function average(...)
    result = 0
@@ -510,6 +655,3 @@ function average(...)
 end
 
 print("The average is",average(10,5,3))
-
-
-
