@@ -6,7 +6,7 @@
 *How Do I Help?*
 * fix the misspelling and typo |
 * translate to another human language ( like French , Russian , etc ) |
-* add codes and tutorial
+* add codes and tutorial |
 * simpler : start | and | fork
 * simpler than simpler : start | or | fork
 * or help to site<PooiaFerdowsi.GitHub.IO/LuaTutorial> |
