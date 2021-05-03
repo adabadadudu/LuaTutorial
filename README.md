@@ -1,7 +1,7 @@
 # Lua Tutorial
 **Lua is faster Java & simpler Python. Yes , that's right** 
 
-***This Repository Is A Lua Tutorial By Codes & Comments***
+***This Repository Is A Lua Tutorial By [Pooia Ferdowsi](https://github.com/PooiaFerdowsi) That You Learn With Reading The Codes & Comments***
 
 *How Do I Help?*
 * fix the misspelling and typo |
