@@ -86,7 +86,7 @@ end
      +     -     *     /     %     ^     # -- al thing in this columns
      ==    ~=    <=    >=    <     >     = # all used in tutorial
      (     )     {     }     [     ]
-     ;     :     ,     .     ..    ...
+     ;+    :     ,+    .     ..+   ...+
 ]]
 
 -- assignment operators ( = or += , -= , *= , nut lua only support = )
@@ -347,13 +347,29 @@ until condition
 
 local i = 0
 repeat
-	io.write("Goooo Lua!!!!!!!!!!!!!! as times",i)
-	i=i+1
+io.write("Goooo Lua!!!!!!!! as times",i,"\n")
+i=i+1
 until i>=100
 
 -- note::::::::::::::::::::::: see in the until 
 -- the condition is false
 -- :::::::::repeat/unti means until that until is false repeat statements:::::::::::::
+
+-- also repeat/until don't need end keyword because util works instead end
+-- inline repeat/until
+
+-- the _G is a table and I add a variable callled iter to _G variable
+_G.iter = 0
+
+function addAndPrint()
+print("Hello , Time")
+_G.iter = _G.iter + 1
+end
+
+print("inline repeat / until")
+repeat addAndPrint() until _G.iter >= 100
+print("inline ended")
+
 
 
 -- and is equal with following while and repeat/until loops
@@ -366,8 +382,8 @@ end
 -- repeat/until
 local r=0
 repeat
-	print("repeat equal with for loop")
-	r=r+1
+print("repeat equal with for loop")
+r=r+1
 until r>=10
 
 -------------
@@ -564,6 +580,7 @@ io.write("AND&AND YOU CAN DON'T USE"); -- & here
 local table = {}
 
 -- add an element to the empty table
+io.write("\n<h1>Tables & Arrays </h1>")
 
 table[1] = "Hello , World!"
 
@@ -600,6 +617,8 @@ local tble = {}
 tble["Hello"] = "World"
 
 print(tble["Hello"])
+print("YOU CAN USE")
+print(tble.Hello)
 
 -- also tables can contain variables in replace values
 -- like following
@@ -610,10 +629,25 @@ local table = {
 	variable="World"
 }
 
-print(table[variable])
--- will be equal with V
-print(table["Hello"])
+print(table.variable)
+-- will not equal with V
+print(table["Hello"]) -- nil
+-- B U T	W H Y ?
+--[[
+	because when You use of tbl["Hello"] this means "Hello"
+	was not a variable but whem you use below code
+	local s = "Hello"
+	table.s -- this means s is a variable
+	also it's possible that s be 's' like up <line:600-639:616>
+]]
 
+io.write("\nBut Is Equal With V")
+
+local table = {
+	[variable]="World"
+}
+
+print(table.variable)
 -- this table is like following table
 -- {["Hello"] = "World"}
 
@@ -626,13 +660,36 @@ local tablee = {
 	variable=word
 }
 
-print(tablee["Hello"])
+print(tablee.variable)
 
 -- tablee is equal with table table
 
 --[[
 		S U C H   A S   N O T E   IO.WRITE  I S  F A S T E R
 		T H AN   PRINT  ABOUT  0.0003
+]]
+
+-- # operator in lua
+--[[
+	the # operator is a misc operator that supports in lua
+	this operator return the length of any thing like len() 
+	function in Python
+]]
+
+print(#"Hello") -- print length of hello (5)
+-- NOTE length starts from 1 no 0 
+print(#{1,2,3,}) -- you can use # for arrays
+
+local Hello = "Hello"
+print(#Hello) -- you can use # for variables
+
+print(#vv) -- or variables hold arrays
+
+print(#tbl) -- BUT UNSUPPORTED FOR TABLES
+print(#{["Hello"]="World",["World"]="Hello"})
+
+--[[
+	if you want get length of tables use of for loops
 ]]
 
 -- LUA in KEYWORD
@@ -644,6 +701,204 @@ for ll in ipairs(l)
 do
 	io.write(ll);
 end
+
+-- LUA STRING FUNCTIONS
+--[[
+	very of good programming languages contain a buildin functions
+	that programmer works better for example str.index - str.split
+	str.format in python or strtok strtok_r in C
+]]
+--[[
+
+	NOTE : FUNCTIONS RETURN A NEW VALUE & DON'T CHANGE VARIABLE VALUES
+
+	Lua contain following string methods that are very low :)
+	-string.upper(arg) -> upper the tstring characters
+	-string.lower(arg) -> lower the string characters
+	-string.gsub(orgi_str,str_that_will_delete,str_that_will_replace)-> 
+	replace last argument with second argument in first argument
+	-string.find(origStr,searchForMe,fromWhereOptional,toWhereOptional)->
+	search for <searchForMe> in the <origStr> and you can pass the 
+	<fromWhereOptional> & <toWhereOptional> but they are optional
+	and <fromWhereOptional> means starts from origStr[0] and 
+	<toWhereOptional> means end from origStr[#toWhereOptional] in 
+	the <origStr> argument
+	-string.reverse(arg) -> return a reversed the <arg> string
+	-string.format(str,...) -> return a formated string ( out of this comment range )
+	-string.len(str) -> return length of string like #str
+	-string.char(int) -> convert a byted string to a character
+	-string.byte(str) -> return a byted string
+	-string.sub(str,start,end) -> return a sub string or sliced string str[start:end] 
+	in python or slice method in JavaScript
+	string.repl(str,n) -> reply string n times
+	string.gmatch() --- more
+	string.mathc() -- more
+	string.dump() --- more
+	string.pack() --- more
+	string.packsize() -- more
+	string.unpack() -- more
+	-- all lua 5.4.3 string methods
+
+	ASLO WE CAN CONCATENATE TWO STRING WITH .. OPERATOR
+]]
+
+-- NOTE
+--[[
+	the string.any(str) is equal with 
+	a = "hello"
+	a:any()
+	or it equal with
+	string.any(a) == a:any()
+]]
+
+print(string.upper("Hello , World"))
+-- or
+a = "Hello , World"
+print(string.upper(a))
+-- or
+a = "Hello , World"
+a = string.upper(a)
+print(a)
+-- or you can don't pass the string when you use :
+a = "Hello , World"
+print(a:upper()) -- "HELLO WORLD"
+-- but variable don't changes
+print(a) -- Hello World
+
+-- string.lower
+
+print(string.lower(a:upper()))
+
+a = string.lower(a:upper());
+print(a)
+
+a = "MY NAME"
+print(a:lower())
+
+-- string.gsub
+
+s = string.gsub("Hello , End","End" , "World") -- Hello , World
+print(s)
+
+s = "x <pooia.ferdowsi.is.developer@gmail.com> created this Lua tutorial"
+x = s
+
+s:gsub("x","Pooia Ferdowsi")
+print(s) -- don't works :(
+
+s = s:gsub("x","Pooia Ferdowsi")
+print(s) -- Yes , works :)
+
+string.gsub(x,"x","Pooia Ferdowsi") 
+print(x) -- don't works :(
+
+x = string.gsub(x,"x","Pooia Ferdowsi") 
+print(x) -- works :)
+
+-- 	B U T	W H Y	?	
+io.write(
+[[
+
+
+because in lua function , tables , userdata & thread are pass by reference. What?
+Pass By Reference . What's it.
+Okay. When we pass a variable to a function lua create a copy of the variable like
+very other language ( C,C++,C#,Java,Python,JS ) this means the variable value don't
+changes this means pass by value. right , now if we want pass by reference how do it.
+Okay. I descript it. insert variable in a table because in Lua , FUNCTIONS , TABLES
+, USERDATAS & THREADS are pass by reference you see them in this tutorial .
+
+What's pass a variable to a function
+see ```func(a,b)``` now we pass a & b to the func function
+
+
+]]
+)
+
+-- string.find
+
+s = "Hello , World"
+print(string.find(s,","))
+print(s:find(","))
+
+x = s:find(",")
+print(string.format("%d",x)) -- formatting print decimal
+
+-- also we can set start point
+print('\n'..s:find(",",0)..'\n')
+
+-- and we can set endpoint if we set starpoint
+print('\nWith endpoint'..'\n'..string.find(s,",",0,9))
+
+-- string.reverse
+-- the reversing string means we start right the str from right to left
+a = "Lua Tutorial"
+b = string.reverse(a)
+print(b)
+b = b:reverse()
+print(b)
+
+-- string.format
+s = string.format("%s %s","Hello","World") -- %s means a string will replace there
+print(s)
+
+local d = "Hello I born is %d"
+print(d:format(2008)) -- %d means a decimal number will replace there
+d = nil -- delete variable go to later
+-- string.len
+print("string.len\n")
+print(a:len())
+
+print(string.len("Hello"))
+print(#"Hello")
+
+-- string.byte & string.char
+--[=[
+	another multiline comment for descript about string.byte:
+	in later computers has a difference digit saving numbers
+	so united states create the American Standard Code for 
+	Information Interchange or ASCII .
+	
+	int the ascii table 'a' is 97 , 'b' is 98 , 'c' is 99
+	and ... 
+
+	the string.byte return ascii number of character
+
+	the string.char take ascii number of character and return
+	the character . for example string.char(97) ,return the 'a'
+]=]
+-- string.byte
+print "string.byte"
+print (string.byte("a")) -- print 97
+print (string.byte('b')) -- print 98
+local c = "c"
+local d = 'd'
+e = 'e'
+f = 'f'
+print (c:byte()) -- print 99
+print (d:byte()) -- print 100
+print (e:byte()) -- print 101
+print (f:byte()) -- print 102
+-- string.char
+print "string.char"
+print (string.char( 97 )) -- print 'a'
+print ( string.char( string.byte( 'H' ) ) ) -- print 'H'
+-- you don't can use num:char() you must use string.char(num)
+local num = 100
+print (string.char(num)) -- print 'd'  
+
+--
+print [=[
+	the [[string]] is multiline string and "" and '' are single line
+	string but moreover than [[]] multiline string you can write a
+	multiline string in this characters ( open by [=[ ) 
+]=]
+
+-- string.sub
+
+-- difference between local keyword and another keyword
+a = 10 -- global scope
+local a = 10 -- local scope
 
 function average(...)
    result = 0
