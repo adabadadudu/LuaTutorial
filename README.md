@@ -9,8 +9,8 @@ Further reading
 ---------------
 You can find good courses in lua's site <https://www.lua.org>
 
-(Programming in Lua)[https://www.lua.org/pil/contents.html] I highlu suggest it as both a prime & a tutor.
-(Lua manual)[https://www.lua.org/manual/5.0/manual.html] I suggest it as your second course.
+* [Programming in Lua](https://www.lua.org/pil/contents.html) I highlu suggest it as both a prime & a tutor.
+* [Lua manual](https://www.lua.org/manual/5.0/manual.html) I suggest it as your second course.
 
 
 *How Do I Help?*
