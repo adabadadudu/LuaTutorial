@@ -25,12 +25,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - uses: leafo/gh-actions-lua@v5
-        with:
-          luaVersion: "5.1"
+      #- uses: leafo/gh-actions-lua@v5
+       # with:
+        #  luaVersion: "5.1"
           
-      - uses: leafo/gh-actions-luarocks@v2
+      #- uses: leafo/gh-actions-luarocks@v2
 
+      - name: Downlad Lua
+        run: git clone https://github.com/lua/lua.git
+      
+      - name: Make Lua
+        run: make
       # Runs a single command using the runners shell
       - name: Execute the file
         run: lua tutor.lua
