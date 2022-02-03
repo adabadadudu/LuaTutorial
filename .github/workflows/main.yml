@@ -34,7 +34,7 @@ jobs:
       - name: Downlad Lua
         run: git clone https://github.com/lua/lua.git
       - name: Extract Lua
-        run: ls # unzip lua-main.git
+        run: ls -l
       - name: Make Lua
         run: make
       # Runs a single command using the runners shell
