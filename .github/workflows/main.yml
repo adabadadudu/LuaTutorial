@@ -32,11 +32,11 @@ jobs:
       #- uses: leafo/gh-actions-luarocks@v2
 
       - name: Downlad Lua
-        run: sudo apt-get install tree #git clone https://github.com/lua/lua.git
+        run: git clone https://github.com/lua/lua.git
       - name: Extract Lua
-        run: tree
+        run: sudo apt-get install tree
       - name: make Lua
-        run: make
+        run: tree
       # Runs a single command using the runners shell
       - name: Execute the file
         run: lua ../tutor.lua
