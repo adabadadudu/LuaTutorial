@@ -66,8 +66,10 @@ print(v0..v1..v2) -- adding strings with ..
 
 print(v0.." "..v1.." "..v2)
 
--- if you want write more than 1 statement in 1 line you can use of ; character like C/C++ , JAVA
-print("Hello , World");print("Hello"," , ","World");print("Hello".." ,".."World")
+-- unlike JAVA/C/C++ lua doesn't use semicolon(;) to end a statement. even only one space is enough. 
+-- Though you can still use semicolons to do that
+print("Hello , World");print("Hello"," , ","World");print("Hello".." ,".."World") -- with semicolon
+print("And The New Time") print("Happy new year!") print("OK!") -- without semicolon
 
 --[[ if condition then do --]]
 
