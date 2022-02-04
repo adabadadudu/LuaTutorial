@@ -33,8 +33,8 @@ jobs:
 
       - name: Downlad Lua
         run: git clone https://github.com/lua/lua.git
-      - name: Extract Lua
-        run: sudo apt-get install tree
+      - name: Make Lua
+        run: make -f lua/makefile
       - name: make Lua
         run: tree
       # Runs a single command using the runners shell
