@@ -25,16 +25,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      # Runs a single command using the runners shell
-      - name: Install necessary packages to run
+      # Install Lua 5.3 with Ubuntu apt
+      - name: Install lua
         run: sudo apt-get install lua5.3
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-        
+      # Run the fie `tutor.lua`
       - name: Run the file
         run: lua tutor.lua
     
