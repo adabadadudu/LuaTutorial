@@ -13,12 +13,12 @@ You can find good courses in lua's site <https://www.lua.org>
 * [Lua manual](https://www.lua.org/manual/5.0/manual.html) I suggest it as your second course.
 
 
-*How Do I Help?*
+*How Can I Help?*
 * fix the misspelling and typo |
 * translate to another human language ( like French , Russian , etc ) |
 * add codes and tutorial |
-* simpler : start | and | fork
-* simpler than simpler : start | or | fork
+* simpler : star | and | fork
+* simpler than simpler : star | or | fork
 * or help to site<PooiaFerdowsi.GitHub.IO/LuaTutorial> |
 * [Site](https://PooiaFerdowsi.GitHub.IO/LuaTutorial) |
 
